@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:navigationIcon="?attr/homeAsUpIndicator">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/action_settings"
+            android:layout_gravity="start"
+            style="@style/Base.TextAppearance.AppCompat.Title"
+            android:textColor="@color/colorFont"
+            android:id="@+id/toolbar_title" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:text="@string/categories"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin" />
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_table"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/chinese"
+            android:gravity="center"
+            android:id="@+id/chinese_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/american"
+            android:gravity="center"
+            android:id="@+id/american_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/italian"
+            android:gravity="center"
+            android:id="@+id/italian_button"></Button>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_table_2"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp">
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/japanese"
+            android:gravity="center"
+            android:id="@+id/japanese_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/mexican"
+            android:gravity="center"
+            android:id="@+id/mexican_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/mediterranean"
+            android:gravity="center"
+            android:id="@+id/mediterranean_button"></Button>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_table_3"
+        android:orientation="horizontal"
+        android:layout_marginTop="2dp">
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/indian"
+            android:gravity="center"
+            android:id="@+id/indian_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/comfort"
+            android:gravity="center"
+            android:id="@+id/comfort_button"></Button>
+
+        <Button
+            android:layout_weight="0.33"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="@string/breakfast"
+            android:gravity="center"
+            android:id="@+id/breakfast_brunch_button"></Button>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:text="@string/price_range"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin" />
+
+    <LinearLayout
+        android:gravity="center_horizontal"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/settings_table_4"
+        android:orientation="horizontal">
+
+        <Button
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="$"
+            android:gravity="center"
+            android:id="@+id/one_dollar"></Button>
+
+        <Button
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/box"
+            android:text="$$"
+            android:gravity="center"
+            android:id="@+id/two_dollar"></Button>
+
+        <Button
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+
+            android:background="@drawable/box"
+            android:text="$$$"
+            android:gravity="center"
+            android:id="@+id/three_dollar"></Button>
+
+        <Button
+            android:layout_weight="0.25"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/box"
+            android:text="$$$$"
+            android:gravity="center"
+            android:id="@+id/four_dollar"></Button>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.TextAppearance.AppCompat.Title"
+        android:gravity="center"
+        android:text="@string/other_settings"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin" />
+
+    <Button
+        android:layout_marginStart="@dimen/activity_vertical_margin"
+        android:layout_marginEnd="@dimen/activity_vertical_margin"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/box"
+        android:text="Only Show Open Now"
+        android:gravity="center"
+        android:id="@+id/open_now"></Button>
+
+</LinearLayout>

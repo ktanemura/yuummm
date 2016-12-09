@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="edu.calpoly.tstan.yuummm.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:titleTextColor="@color/colorFont"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/settings_button"
+                android:src="@mipmap/ic_settings_gear"
+                android:background="@color/colorPrimary"
+                android:layout_marginStart="@dimen/activity_vertical_margin"
+                android:layout_marginEnd="@dimen/activity_vertical_margin"
+                android:layout_gravity="end" />
+
+        </android.support.v7.widget.Toolbar>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center">
+
+        <ImageButton
+            android:background="#0000"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_height="wrap_content"
+            android:id="@+id/suggest_button"
+            android:src="@drawable/yum_icon" />
+
+    </LinearLayout>
+</android.support.design.widget.CoordinatorLayout>
+

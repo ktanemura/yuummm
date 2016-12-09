@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/outer">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:gravity="center"
+                android:id="@+id/e_lay">
+
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/business_pic" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@mipmap/yelp_icon"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="0.1dp"
+                    android:paddingRight="0.1dp"
+                    android:id="@+id/yelp_button" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="0.1dp"
+                    android:id="@+id/rating_pic" />
+                <!--        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+                            android:paddingLeft="10dp"
+                            android:paddingBottom="5dp"
+                            android:textSize="24sp"
+                            android:textColor="#FFFFFF"
+                            android:shadowColor="#000000"
+                            android:shadowDx="0"
+                            android:shadowDy="0"
+                            android:shadowRadius="5"
+                            android:id="@+id/business_name"/>-->
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/business_price"
+                android:textStyle="bold"
+                android:textSize="24sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/distance"
+                android:textStyle="bold"
+                android:textSize="24sp" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/colorAccent"
+                android:id="@+id/direction_button"
+                android:drawableRight="@mipmap/ic_nav_final"
+                android:textColor="@color/white"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/share_button"
+                    android:layout_weight="1"
+                    android:src="@drawable/chat"
+                    android:background="@drawable/chatbutton" />
+
+                <ImageButton
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/call_button"
+                    android:layout_weight="1"
+                    android:src="@drawable/callicon"
+                    android:background="@drawable/callbutton" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
