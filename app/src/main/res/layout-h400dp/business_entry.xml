@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
     android:id="@+id/outer">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center_horizontal">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
+                android:layout_alignParentTop="true"
                 android:gravity="center"
                 android:id="@+id/e_lay">
 
@@ -26,8 +27,8 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:scaleType="centerCrop"
                     android:id="@+id/business_pic" />
@@ -37,9 +38,9 @@
                     android:layout_height="wrap_content"
                     android:background="@mipmap/yelp_icon"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
                     android:paddingTop="0.1dp"
-                    android:paddingEnd="0.1dp"
+                    android:paddingRight="0.1dp"
                     android:id="@+id/yelp_button" />
 
                 <ImageView
@@ -66,53 +67,65 @@
                             android:id="@+id/business_name"/>-->
 
             </RelativeLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/business_price"
                 android:textStyle="bold"
-                android:textSize="24sp" />
+                android:textAlignment="center"
+                android:textSize="24sp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/distance"
                 android:textStyle="bold"
-                android:textSize="24sp" />
-
-            <Button
+                android:textSize="24sp"
+                android:textAlignment="center"/>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
-                android:paddingRight="10dp"
-                android:background="@color/colorAccent"
-                android:id="@+id/direction_button"
-                android:drawableRight="@mipmap/ic_nav_final"
-                android:textColor="@color/white"
-                android:textAlignment="center" />
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true">
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:paddingBottom="10dp"
+                    android:background="@color/colorAccent"
+                    android:id="@+id/direction_button"
+                    android:drawableRight="@drawable/ic_navigation_white_24dp"
+                    android:textColor="@color/white"
+                    android:textAlignment="center"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/bottom_buttons">
 
                 <ImageButton
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/share_button"
                     android:layout_weight="1"
-                    android:src="@drawable/chat"
+                    android:src="@drawable/ic_message_text_outline_white_48dp"
                     android:background="@drawable/chatbutton" />
 
                 <ImageButton
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:id="@+id/call_button"
                     android:layout_weight="1"
-                    android:src="@drawable/callicon"
+                    android:src="@drawable/ic_phone_white_48dp"
                     android:background="@drawable/callbutton" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </RelativeLayout>
+</ScrollView>

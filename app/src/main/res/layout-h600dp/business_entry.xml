@@ -18,7 +18,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="300dp"
                 android:layout_alignParentTop="true"
                 android:gravity="center"
                 android:id="@+id/e_lay">
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/distance"
                 android:textStyle="bold"
-                android:textSize="24sp"
+                android:textSize="26sp"
                 android:textAlignment="center"/>
         </LinearLayout>
         <LinearLayout
