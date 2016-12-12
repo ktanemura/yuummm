@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerVertical="true"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
     android:id="@+id/outer">
 
-    <ScrollView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:gravity="center">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center_horizontal">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
                 android:gravity="center"
                 android:id="@+id/e_lay">
 
-
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:scaleType="centerInside"
+                    android:scaleType="centerCrop"
                     android:id="@+id/business_pic" />
 
                 <ImageButton
@@ -67,12 +67,12 @@
                             android:id="@+id/business_name"/>-->
 
             </RelativeLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/business_price"
                 android:textStyle="bold"
+                android:textAlignment="center"
                 android:textSize="24sp" />
 
             <TextView
@@ -80,8 +80,15 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/distance"
                 android:textStyle="bold"
-                android:textSize="24sp" />
+                android:textSize="24sp"
+                android:textAlignment="center" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true">
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -89,33 +96,37 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorAccentOld"
                 android:id="@+id/direction_button"
-                android:drawableRight="@drawable/ic_navigation_white_24dp"
+                android:drawableEnd="@drawable/ic_navigation_white_24dp"
                 android:textColor="@color/white"
                 android:textAlignment="center" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/bottom_buttons">
 
                 <ImageButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
                     android:id="@+id/share_button"
                     android:layout_weight="1"
                     android:src="@drawable/ic_message_text_outline_white_48dp"
                     android:background="@drawable/chatbutton" />
 
                 <ImageButton
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:id="@+id/call_button"
                     android:layout_weight="1"
                     android:src="@drawable/ic_phone_white_48dp"
                     android:background="@drawable/callbutton" />
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+    </RelativeLayout>
+</ScrollView>
