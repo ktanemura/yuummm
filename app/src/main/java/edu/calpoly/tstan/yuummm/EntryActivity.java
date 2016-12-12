@@ -12,10 +12,12 @@ import android.support.v7.graphics.Palette;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -84,6 +86,9 @@ public class EntryActivity extends AppCompatActivity {
             rat.setImageDrawable(ContextCompat.getDrawable(rat.getContext(), R.drawable.stars_0));
         }
 
+        ScrollView outer = (ScrollView) findViewById(R.id.outer);
+        outer.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimary));
+
         //Set up title and photo header
         setTitle(e.getName());
         //name.setText(e.getName());
@@ -104,9 +109,15 @@ public class EntryActivity extends AppCompatActivity {
 
 //        rating.setText("Rating: " + String.valueOf(e.getRating()));
         price.setText("Price: " + e.getPrice());
+        price.setTextColor(ContextCompat.getColor(this, R.color.white));
+        ViewGroup.MarginLayoutParams mlp = (ViewGroup.MarginLayoutParams) price
+                .getLayoutParams();
+        mlp.setMargins(0, 16, 0, 7);
         StringBuilder sb = new StringBuilder();
         sb.append(e.getDistance() * M_TO_MILES);
         distance.setText("Distance: " + sb.substring(0, 4) + "mi");
+        distance.setTextColor(ContextCompat.getColor(this, R.color.white));
+
         Log.d("EntryActivity", "Should be full");
 
         yelp.setOnTouchListener(new View.OnTouchListener() {
@@ -142,6 +153,7 @@ public class EntryActivity extends AppCompatActivity {
 
         bt = (Button) findViewById(R.id.direction_button);
         bt.setText(e.getLocation().toSingleLineString());
+        bt.setBackgroundColor(ContextCompat.getColor(this, R.color.colorAccentOld));
         bt.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {

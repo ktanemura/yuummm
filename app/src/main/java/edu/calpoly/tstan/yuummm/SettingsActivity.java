@@ -7,12 +7,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.ArrayList;
 import java.util.Set;
 
 import static android.widget.TableLayout.OnClickListener;
@@ -28,6 +29,16 @@ public class SettingsActivity extends AppCompatActivity {
 
     public static int checkedColor;
     public static int uncheckedColor;
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        final Button opennow = (Button) findViewById(R.id.open_now);
+
+        //this is kind of hacky...
+        opennow.callOnClick();
+        opennow.callOnClick();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +58,15 @@ public class SettingsActivity extends AppCompatActivity {
 
         setupCategoryButtons();
 
-        Button price1 = (Button) findViewById(R.id.one_dollar);
+        final Button price1 = (Button) findViewById(R.id.one_dollar);
         setupPriceButton(price1, "1");
-        Button price2 = (Button) findViewById(R.id.two_dollar);
+        final Button price2 = (Button) findViewById(R.id.two_dollar);
         setupPriceButton(price2, "2");
 
-        Button price3 = (Button) findViewById(R.id.three_dollar);
+        final Button price3 = (Button) findViewById(R.id.three_dollar);
         setupPriceButton(price3, "3");
 
-        Button price4 = (Button) findViewById(R.id.four_dollar);
+        final Button price4 = (Button) findViewById(R.id.four_dollar);
         setupPriceButton(price4, "4");
 
         final Button opennow = (Button) findViewById(R.id.open_now);
@@ -76,34 +87,62 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        Spinner dropdown = (Spinner) findViewById(R.id.distance_max);
+        final String[] items = new String[]
+                {"5 miles (<= 10 min drive)",
+                        "10 miles (<= 18 min drive)",
+                        "15 miles (<= 24 min drive)",
+                        "25 miles (<= 30 min drive)"};
+        final ArrayList<Integer> distances = new ArrayList<>();
+
+        distances.add(8047);
+        distances.add(16094);
+        distances.add(24141);
+        distances.add(39999);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        dropdown.setAdapter(adapter);
+        dropdown.setSelection(distances.indexOf(sharedPreferences.getInt("radius", 39999)));
+        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                editor.putInt("radius", distances.get(i));
+                editor.apply();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                System.out.println("nothing selected");
+            }
+        });
     }
 
     public void setupCategoryButtons() {
-        Button chinese_button = (Button) findViewById(R.id.chinese_button);
+        final Button chinese_button = (Button) findViewById(R.id.chinese_button);
         setupCategoryButton(chinese_button, "chinese");
 
-        Button american_button = (Button) findViewById(R.id.american_button);
+        final Button american_button = (Button) findViewById(R.id.american_button);
         setupCategoryButton(american_button, "newamerican");
 
-        Button italian_button = (Button) findViewById(R.id.italian_button);
+        final Button italian_button = (Button) findViewById(R.id.italian_button);
         setupCategoryButton(italian_button, "italian");
 
-        Button japanese_button = (Button) findViewById(R.id.japanese_button);
+        final Button japanese_button = (Button) findViewById(R.id.japanese_button);
         setupCategoryButton(japanese_button, "japanese");
 
-        Button mexican_button = (Button) findViewById(R.id.mexican_button);
+        final Button mexican_button = (Button) findViewById(R.id.mexican_button);
         setupCategoryButton(mexican_button, "mexican");
 
-        Button mediterranean_button = (Button) findViewById(R.id.mediterranean_button);
+        final Button mediterranean_button = (Button) findViewById(R.id.mediterranean_button);
         setupCategoryButton(mediterranean_button, "mediterranean");
 
-        Button indian_button = (Button) findViewById(R.id.indian_button);
+        final Button indian_button = (Button) findViewById(R.id.indian_button);
         setupCategoryButton(indian_button, "indpak");
 
-        Button comfort_button = (Button) findViewById(R.id.comfort_button);
+        final Button comfort_button = (Button) findViewById(R.id.comfort_button);
         setupCategoryButton(comfort_button, "comfortfood");
 
-        Button brunch_button = (Button) findViewById(R.id.breakfast_brunch_button);
+        final Button brunch_button = (Button) findViewById(R.id.breakfast_brunch_button);
         setupCategoryButton(brunch_button, "breakfast_brunch");
     }
 
@@ -119,14 +158,14 @@ public class SettingsActivity extends AppCompatActivity {
                 } else if (result == 2) {
                     button.setBackgroundColor(checkedColor);
                 }
+                editor.apply();
             }
         });
 
     }
 
     public void setPriceColor(final Button button, String value) {
-        List<String> prices = Arrays.asList(sharedPreferences.getString("price", null).split(","));
-        if (prices.contains(value)) {
+        if (sharedPreferences.getStringSet("prices", null).contains(value)) {
             button.setBackgroundColor(checkedColor);
         }
     }
@@ -146,15 +185,22 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public boolean addOrRemovePrice(String value) {
-        LinkedList<String> prices = new LinkedList<>(Arrays.asList(sharedPreferences.getString("price", null).split(",")));
+        Set<String> prices = sharedPreferences.getStringSet("prices", null);
+
         if (prices.contains(value)) {
-            prices.remove(value);
-            editor.putString("price", android.text.TextUtils.join(",", prices));
-            editor.apply();
-            return true;
+            if (sharedPreferences.getStringSet("prices", null).size() < 2) {
+                Log.d("SettingsActivity", "At least one price should be checked.");
+                Toast.makeText(this, "At least one price range must be selected!", Toast.LENGTH_SHORT).show();
+                return false;
+            } else {
+                prices.remove(value);
+                editor.putStringSet("prices", prices);
+                editor.apply();
+                return true;
+            }
         }
         prices.add(value);
-        editor.putString("price", android.text.TextUtils.join(",", prices));
+        editor.putStringSet("prices", prices);
         editor.apply();
         return false;
     }
@@ -171,8 +217,8 @@ public class SettingsActivity extends AppCompatActivity {
 
         if (sharedPreferences.getStringSet("categories", null).contains(category)) {
             if (sharedPreferences.getStringSet("categories", null).size() < 2) {
-                Log.d("SettingsActivity", "At least one checkbox should be checked.");
-                Toast.makeText(this, "At least one category must be checked!", Toast.LENGTH_SHORT).show();
+                Log.d("SettingsActivity", "At least one category should be selected.");
+                Toast.makeText(this, "At least one category must be selected!", Toast.LENGTH_SHORT).show();
             } else {
                 Set<String> categories = sharedPreferences.getStringSet("categories", null);
                 categories.remove(category);

@@ -14,7 +14,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:id="@+id/encasinglinear">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -95,9 +96,9 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:paddingBottom="10dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorAccentOld"
                 android:id="@+id/direction_button"
-                android:drawableRight="@drawable/ic_navigation_white_24dp"
+                android:drawableEnd="@drawable/ic_navigation_white_24dp"
                 android:textColor="@color/white"
                 android:textAlignment="center"/>
 

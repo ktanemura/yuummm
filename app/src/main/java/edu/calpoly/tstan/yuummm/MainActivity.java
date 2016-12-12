@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.HashSet;
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
 
         sharedPreferences = getApplicationContext().getSharedPreferences("yuummm.pref", MODE_PRIVATE);
         editor = sharedPreferences.edit();
+
         // first run, should only happen once
         if (sharedPreferences.getAll().isEmpty()) {
             Log.d(TAG, "Initializing Shared Preferences");
@@ -141,8 +143,10 @@ public class MainActivity extends AppCompatActivity {
 
             editor.putInt("radius", MAX_RADIUS);
 
-            editor.putString("price", "1,2,3"); //doesn't work yet
-
+            Set<String> prices = new HashSet<>();
+            prices.add("1");
+            prices.add("2");
+            editor.putStringSet("prices", prices);
             editor.apply();
         }
 
@@ -240,6 +244,8 @@ public class MainActivity extends AppCompatActivity {
                                 v2.getContext().startActivity(mIntent);
                             } else {
                                 Log.e(TAG, "No results");
+                                Toast.makeText(getApplicationContext(), "No results were found. Please help us by adjusting your settings.", Toast.LENGTH_SHORT).show();
+
                             }
                         }
 
@@ -286,7 +292,15 @@ public class MainActivity extends AppCompatActivity {
 
         categories = stringBuilder.toString();
 
-        price = sharedPreferences.getString("price", "1,2,3");
+        Set<String> prices = sharedPreferences.getStringSet("prices", null);
+        stringBuilder = new StringBuilder();
+
+        for (String string : prices) {
+            stringBuilder.append(string + ",");
+        }
+        stringBuilder.setLength(stringBuilder.length() - 1); //trim final comma
+
+        price = stringBuilder.toString();
 
         open_now = sharedPreferences.getBoolean("open_now", false);
     }

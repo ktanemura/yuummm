@@ -30,6 +30,7 @@
             android:label="@string/settings"
             android:name="edu.calpoly.tstan.yuummm.SettingsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+
     </application>
 
 </manifest>
