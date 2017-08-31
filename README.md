@@ -12,3 +12,11 @@ Allows the user to set search options including:
 - Availability
 
 Utilizes the Yelp RESTful API using Retrofit.
+
+Available on the app store.
+
+Developers:
+- Kyle Tanemura
+- Theodore Tan
+
+A project for CSC436
